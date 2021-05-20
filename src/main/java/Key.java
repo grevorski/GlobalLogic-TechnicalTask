@@ -1,8 +1,8 @@
 import java.util.Objects;
 
 public class Key {
-    private String letters;
-    private int wordSize;
+    private final String letters;
+    private final int wordSize;
 
     public Key(String letters, int wordSize) {
         this.letters = letters;

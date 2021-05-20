@@ -23,7 +23,7 @@ public class Solution {
         return letters;
     }
 
-    public void solution(String input, String charactersToLookFor){
+    public String solution(String input, String charactersToLookFor){
 
         String[] words = inputEdit(input);
         Set<Character> letters = setCharactersToLookFor(charactersToLookFor);
@@ -65,17 +65,18 @@ public class Solution {
         //rounding
         df2.setRoundingMode(RoundingMode.HALF_UP);
         double fractionFromFrequency = (double)sum/charSum;
-
+        StringBuilder resultSb = new StringBuilder();
         HashMap<Key,Integer> sortedHashMap = sortByValue(charKey);
         for(Key k : sortedHashMap.keySet()){
             String key = k.toString();
             int frequency = sortedHashMap.get(k);
             double frequencyForWord = (double)frequency/sum;
-            System.out.println("{" + key + "}" + " = " + df2.format(frequencyForWord) + " (" + frequency + "/" + sum +")");
+            resultSb.append("{").append(key).append("}").append(" = ").append(df2.format(frequencyForWord)).append(" (").append(frequency).append("/").append(sum).append(")").append("\n");
+
         }
 
-
-        System.out.println("TOTAL Frequency: " + df2.format(fractionFromFrequency) +" (" + sum + "/" + charSum + ")");
+        resultSb.append("TOTAL Frequency: ").append(df2.format(fractionFromFrequency)).append(" (").append(sum).append("/").append(charSum).append(")");
+        return resultSb.toString();
     }
 
 
